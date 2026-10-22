@@ -103,5 +103,5 @@ window.PROFILE = {
       text: "music is the hardest one to pin down: if i like it, it goes straight onto my playlist. mostly pop and classical. i'm a waltz lover at heart. not really into metal or headbanging, sorry :( you can find it all on my spotify ♡"
     }
   ],
-  note: "currently: writing lore articles at 2am ✿"
+  note: "currently: waiting for genshin 7.2 special program ✿"
 };
