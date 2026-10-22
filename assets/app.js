@@ -464,6 +464,103 @@
     else if (mq.addListener) mq.addListener(onScheme);
   } catch (e) { /* ignore */ }
 
+  /* ---- music ------------------------------------------------------------- */
+  var music = P.music;
+  var musicBtn = $("#music");
+  var musicAudio = $("#music-audio");
+
+  if (music && music.src && musicBtn && musicAudio) {
+    var musicArmed = true;
+    var musicStarted = false;
+
+    try {
+      musicArmed = localStorage.getItem("lli-music") !== "off";
+    } catch (e) { /* ignore */ }
+
+    musicAudio.src = music.src;
+    musicAudio.loop = music.loop !== false;
+    musicAudio.volume = typeof music.volume === "number"
+      ? Math.max(0, Math.min(1, music.volume))
+      : 0.35;
+
+    function setMusicButton(playing) {
+      musicBtn.classList.toggle("is-playing", playing);
+      musicBtn.setAttribute("aria-pressed", String(playing));
+      var label = playing ? "pause music" : "play music";
+      musicBtn.setAttribute("aria-label", label);
+      musicBtn.title = label;
+    }
+
+    function stopAutoStart() {
+      document.removeEventListener("pointerdown", startMusicOnGesture);
+      document.removeEventListener("keydown", startMusicOnGesture);
+    }
+
+    function startMusic() {
+      musicArmed = true;
+      store("lli-music", "on");
+      musicAudio.play().then(function () {
+        musicStarted = true;
+        setMusicButton(true);
+        stopAutoStart();
+      }).catch(function () {
+        setMusicButton(false);
+      });
+    }
+
+    function pauseMusic() {
+      musicArmed = false;
+      store("lli-music", "off");
+      musicAudio.pause();
+      setMusicButton(false);
+    }
+
+    function startMusicOnGesture(event) {
+      if (!musicArmed || musicStarted) return;
+      if (event && event.type === "keydown" && event.key !== "Enter" && event.key !== " ") return;
+      if (event && event.target && event.target.closest && event.target.closest("#music")) return;
+
+      musicAudio.play().then(function () {
+        musicStarted = true;
+        setMusicButton(true);
+        stopAutoStart();
+      }).catch(function () {
+        // keep waiting for a gesture that the browser accepts
+      });
+    }
+
+    musicBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      if (musicAudio.paused) startMusic();
+      else pauseMusic();
+    });
+
+    musicAudio.addEventListener("play", function () {
+      musicStarted = true;
+      setMusicButton(true);
+      stopAutoStart();
+    });
+
+    musicAudio.addEventListener("pause", function () {
+      setMusicButton(false);
+    });
+
+    musicAudio.addEventListener("error", function () {
+      musicArmed = false;
+      setMusicButton(false);
+      stopAutoStart();
+    });
+
+    setMusicButton(false);
+
+    if (music.startOnFirstTap !== false && musicArmed) {
+      document.addEventListener("pointerdown", startMusicOnGesture, { passive: true });
+      document.addEventListener("keydown", startMusicOnGesture);
+    }
+  } else if (musicBtn) {
+    musicBtn.hidden = true;
+  }
+
   /* ---- share ------------------------------------------------------------- */
   $("#share").addEventListener("click", function () {
     var url = window.location.href;

@@ -1598,6 +1598,24 @@ html[data-mode="dark"] .note {
   display: none;
 }
 
+.i-pause {
+  display: none;
+}
+
+#music.is-playing {
+  color: var(--accent);
+  border-color: color-mix(in oklab, var(--accent) 32%, transparent);
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+}
+
+#music.is-playing .i-note {
+  display: none;
+}
+
+#music.is-playing .i-pause {
+  display: block;
+}
+
 html[data-mode="dark"] .i-sun {
   display: block;
 }
