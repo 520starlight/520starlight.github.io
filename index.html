@@ -190,6 +190,17 @@
       <footer class="card__footer">
         <div class="themes" id="themes" role="group" aria-label="colour theme"></div>
         <div class="actions">
+          <button class="icon-btn" id="music" type="button" aria-label="play music" title="play music" aria-pressed="false">
+            <svg class="i-note" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18V5l10-2v13"></path>
+              <circle cx="6" cy="18" r="3"></circle>
+              <circle cx="16" cy="16" r="3"></circle>
+            </svg>
+            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 5v14"></path>
+              <path d="M15 5v14"></path>
+            </svg>
+          </button>
           <button class="icon-btn" id="share" type="button" aria-label="share this page" title="share this page">
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 3v11"></path>
@@ -217,6 +228,8 @@
     <p class="noscript">this page needs javascript for the pretty bits. you can still find me on
       <a href="https://x.com/520starlight">x&nbsp;·&nbsp;@520starlight</a>.</p>
   </noscript>
+
+  <audio id="music-audio" loop preload="auto" hidden></audio>
 
   <script src="content.js"></script>
   <script src="assets/icons.js"></script>

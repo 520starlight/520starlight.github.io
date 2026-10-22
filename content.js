@@ -9,6 +9,12 @@ window.PROFILE = {
   avatarAlt: "lau la's profile picture",
   avatarFallback: "assets/avatar-cat.png",
   status: "online",
+  music: {
+    src: "assets/lovers-oath.mp3",
+    volume: 0.35,
+    loop: true,
+    startOnFirstTap: true
+  },
   bannerNote: "hi hi ♡",
   tags: [],
   about: {
