@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>og card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Fraunces:opsz,wght@9..144,600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+  body {
+    font-family: "Nunito", sans-serif;
+    color: #223848;
+    background: #eef9fd;
+    position: relative;
+  }
+  .blob { position: absolute; border-radius: 50%; filter: blur(80px); }
+  .b1 { width: 760px; height: 760px; left: -220px; top: -300px; background: radial-gradient(circle, #d6f5fb, transparent 68%); }
+  .b2 { width: 720px; height: 720px; right: -260px; bottom: -320px; background: radial-gradient(circle, #deedff, transparent 68%); }
+  .b3 { width: 560px; height: 560px; left: 520px; top: 300px; background: radial-gradient(circle, #e6faf8, transparent 70%); opacity: .9; }
+  .grain {
+    position: absolute; inset: 0; opacity: .04; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .star { position: absolute; color: #6dd3f7; opacity: .45; font-family: "Fraunces", serif; }
+  .s1 { left: 72px; top: 84px; font-size: 22px; }
+  .s2 { right: 96px; top: 70px; font-size: 15px; opacity: .55; }
+  .s3 { right: 74px; bottom: 110px; font-size: 26px; opacity: .4; }
+  .s4 { left: 110px; bottom: 74px; font-size: 14px; opacity: .5; }
+
+  .panel {
+    position: absolute;
+    left: 60px; right: 60px; top: 58px; bottom: 58px;
+    display: flex;
+    align-items: center;
+    gap: 58px;
+    padding: 56px 64px;
+    border-radius: 46px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(255, 255, 255, 0.94);
+    box-shadow:
+      0 40px 80px -40px rgba(40, 92, 124, 0.4),
+      0 10px 24px -18px rgba(40, 92, 124, 0.22),
+      inset 0 1px 0 #fff;
+    backdrop-filter: blur(22px) saturate(1.15);
+  }
+
+  .sticker {
+    position: absolute;
+    z-index: 0;
+    top: -38px;
+    right: 44px;
+    width: 84px;
+    height: 84px;
+    clip-path: polygon(50% 0%, 61% 34%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 34%);
+    background: rgba(255, 255, 255, 0.6);
+    transform: rotate(10deg);
+    filter: drop-shadow(0 8px 14px rgba(55, 110, 145, 0.18));
+  }
+  .sticker span {
+    position: absolute;
+    inset: 5px;
+    clip-path: polygon(50% 0%, 61% 34%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 34%);
+    background: linear-gradient(145deg, #bbebfb, #7ab4f9);
+  }
+
+  .avatar {
+    flex: 0 0 auto;
+    width: 280px; height: 280px;
+    padding: 6px;
+    border-radius: 50%;
+    background: conic-gradient(from 20deg, #6dd3f7, #7ab4f9 120deg, #bbebfb 215deg, #6dd3f7 360deg);
+    box-shadow: 0 20px 40px -22px rgba(55, 125, 165, 0.55);
+  }
+  .avatar img {
+    display: block; width: 100%; height: 100%;
+    border: 8px solid #fbfeff;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .content { min-width: 0; padding-top: 4px; position: relative; z-index: 1; }
+  .eyebrow {
+    margin: 0 0 6px;
+    font-family: "Caveat", cursive;
+    font-size: 34px;
+    line-height: 1;
+    color: #3f8fc9;
+  }
+  h1 {
+    margin: 0;
+    font-family: "Fraunces", serif;
+    font-size: 94px;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: #223848;
+  }
+  .row { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+  .handle {
+    padding: 8px 18px;
+    border: 1px solid rgba(63, 143, 201, 0.24);
+    border-radius: 999px;
+    background: rgba(63, 143, 201, 0.12);
+    color: #2f7db3;
+    font-size: 22px;
+    font-weight: 800;
+  }
+  .bio {
+    margin: 26px 0 0;
+    max-width: 640px;
+    color: #405c6d;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  mark {
+    padding: 0 3px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, transparent 56%, rgba(122, 180, 249, 0.38) 56%);
+    color: inherit;
+  }
+  .foot {
+    position: absolute;
+    left: 0; right: 0; bottom: 14px;
+    text-align: center;
+    color: #5a7484;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .foot span { color: #7ab4f9; margin: 0 6px; }
+</style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="grain"></div>
+  <span class="star s1">✦</span>
+  <span class="star s2">✧</span>
+  <span class="star s3">✦</span>
+  <span class="star s4">✧</span>
+
+  <div class="panel">
+    <div class="sticker"><span></span></div>
+    <div class="avatar"><img src="assets/avatar.jpg" alt=""></div>
+    <div class="content">
+      <p class="eyebrow">welcome to my little corner ♡</p>
+      <h1>lau la</h1>
+      <div class="row">
+        <span class="handle">@520starlight</span>
+      </div>
+      <p class="bio">rambling about <mark>genshin lore</mark><br>&amp; the games i play ♡</p>
+    </div>
+  </div>
+
+  <div class="foot">520starlight.github.io<span>✧</span>links</div>
+</body>
+</html>
