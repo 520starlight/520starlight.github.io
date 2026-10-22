@@ -1,6 +1,6 @@
 window.PROFILE = {
   name: "lau la",
-  pageTitle: "✧lau la✧",
+  pageTitle: "✧ lau la ✧",
   handle: "@520starlight",
   eyebrow: "welcome to my little corner ♡",
   bio: "rambling about **genshin lore**\n& the games i play ♡",
