@@ -8,7 +8,7 @@ window.PROFILE = {
   avatar: "assets/avatar.jpg",
   avatarAlt: "lau la's profile picture",
   avatarFallback: "assets/avatar-cat.png",
-  status: "online",
+  status: "away",
   music: {
     src: "assets/lovers-oath.mp3",
     volume: 0.35,
