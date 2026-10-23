@@ -91,12 +91,12 @@ window.PROFILE = {
     {
       label: "characters",
       icon: "heart",
-      text: "tall male characters in every game i play ♡ my friends know i love kamisato ayato, varka, mydei, and severian. special shoutout to my son bennett, i love you ♡ also hinata shouyou, lucy heartfilia, and midorima shintarou."
+      text: "tall male characters in every game i play ♡ my friends know i love kamisato ayato, varka, mydei, and severian. special shoutout to my son bennett, i love you ♡ also hinata shouyou, lucy heartfilia, miyuki kazuya, and midorima shintarou."
     },
     {
       label: "animanga",
       icon: "book",
-      text: "fairy tail · haikyuu!! · kuroko no basuke · hunter x hunter · wind breaker · tensura, and more. honestly, i've lost track of my animanga journey, i haven't been reading or watching much lately."
+      text: "fairy tail · haikyuu!! · kuroko no basuke · hunter x hunter · wind breaker · diamond no ace · tensura, and more. honestly, i've lost track of my animanga journey, i haven't been reading or watching much lately."
     },
     {
       label: "manhwa",
